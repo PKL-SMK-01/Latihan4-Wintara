@@ -1,0 +1,74 @@
+<div class="container">
+
+    <div class="row col-md-7 mx-auto mt-5">
+        <div class="">
+            <header class="bg-dark text-white p-2 mb-3 text-center fs-4 rounded fw-bold">
+                Register
+            </header>
+        </div>
+    
+        <div class="">
+            <form (ngSubmit)="submit()" [formGroup]="form">
+                <div class="input-group mb-3">
+                    <span class="input-group-text bg-dark text-white text-center" id="name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <input type="text" name="name" formControlName="name" class="form-control" placeholder="Enter Name" aria-label="Name" aria-describedby="name" [ngClass]="{'is-invalid': submitted && f.name.errors}">
+
+                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                        <div *ngIf="f.name.errors.required">
+                            Name is required
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text bg-dark text-white" id="email">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <input type="email" formControlName="email" name="email" class="form-control" placeholder="Enter Email" aria-label="Email" aria-describedby="email"
+                    [ngClass]="{'is-invalid': submitted && f.email.errors}">
+
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">
+                            Email is required
+                        </div>
+
+                        <div *ngIf="f.email.errors.email">
+                            Email must be a valid email address
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text bg-dark text-white" id="password">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <input type="password" formControlName="password" name="password" class="form-control" placeholder="Enter Password" aria-label="Password" aria-describedby="password" [ngClass]="{'is-invalid': submitted && f.password.errors}">
+
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">
+                            Password is required
+                        </div>
+
+                        <div *ngIf="f.password.errors.minlength">
+                            Password must be a atleast 6 characters
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text bg-dark text-white" id="c_password">Confirm Password</span>
+                    <input type="password" formControlName="c_password" name="c_password" class="form-control" placeholder="Enter Confirm Password" aria-label="C_password" aria-describedby="c_password"  [ngClass]="{'is-invalid': submitted && f.c_password.errors}">
+
+                    <div *ngIf="submitted && f.c_password.errors" class="invalid-feedback">
+                        <div *ngIf="f.c_password.errors.required">
+                            Confirm Password is required
+                        </div>
+
+                        <div *ngIf="f.c_password.errors.mustMatch">
+                            Password must match
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary text-white text-center col-md-12 mb-2">Register</button>
+                <button type="reset" class="btn btn-danger text-white text-center col-md-12">Reset</button>
+                <hr>
+                <p class="text-center">Have you created an account? <a routerLink="/login" routerLinkActive="router-link-active"  class="text-decoration-none">Login Now</a></p>
+            </form>
+        </div>
+    </div>
+
+</div>
